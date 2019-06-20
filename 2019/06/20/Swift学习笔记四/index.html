@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://Li5264a.github.io">
-  <title>Archives: 2019 | Hexo</title>
+  <title>Swift学习笔记四 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://Li5264a.github.io/archives/2019/index.html">
+  <meta name="description" content="前面三篇笔记通过一些示例展示了Swift的一些特性，粗略地介绍了它的语法和特色，从这一篇笔记开始，将正式系统地介绍Swift的语法和特性了。 Swift通过唯一的名称来使用变量保存和引用值，Swift也大量运用了不可改变的值，即所谓常量。常量的运用贯穿了Swift，使得代码更安全，更简洁。 除了那些熟悉的类型，Swift也增加了之前没有出现的新类型，比如元组(tuple)，元组可以让你创建和传递成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习笔记四">
+<meta property="og:url" content="https://Li5264a.github.io/2019/06/20/Swift学习笔记四/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前面三篇笔记通过一些示例展示了Swift的一些特性，粗略地介绍了它的语法和特色，从这一篇笔记开始，将正式系统地介绍Swift的语法和特性了。 Swift通过唯一的名称来使用变量保存和引用值，Swift也大量运用了不可改变的值，即所谓常量。常量的运用贯穿了Swift，使得代码更安全，更简洁。 除了那些熟悉的类型，Swift也增加了之前没有出现的新类型，比如元组(tuple)，元组可以让你创建和传递成">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-20T15:43:41.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Swift学习笔记四">
+<meta name="twitter:description" content="前面三篇笔记通过一些示例展示了Swift的一些特性，粗略地介绍了它的语法和特色，从这一篇笔记开始，将正式系统地介绍Swift的语法和特性了。 Swift通过唯一的名称来使用变量保存和引用值，Swift也大量运用了不可改变的值，即所谓常量。常量的运用贯穿了Swift，使得代码更安全，更简洁。 除了那些熟悉的类型，Swift也增加了之前没有出现的新类型，比如元组(tuple)，元组可以让你创建和传递成">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,184 +154,209 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Swift学习笔记四" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Swift学习笔记四
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/20/Swift学习笔记四/" class="archive-article-date">
+
+        
+        <a href="/2019/06/20/Swift学习笔记四/" class="archive-article-date">
   	<time datetime="2019-06-20T15:28:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/20/Swift学习笔记四/">Swift学习笔记四</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前面三篇笔记通过一些示例展示了Swift的一些特性，粗略地介绍了它的语法和特色，从这一篇笔记开始，将正式系统地介绍Swift的语法和特性了。</p>
+<p>Swift通过唯一的名称来使用变量保存和引用值，Swift也大量运用了不可改变的值，即所谓常量。常量的运用贯穿了Swift，使得代码更安全，更简洁。</p>
+<p>除了那些熟悉的类型，Swift也增加了之前没有出现的新类型，比如元组(tuple)，元组可以让你创建和传递成组的值，可以用元组将很多值作为一个复合值从函数返回。</p>
+<p>Swift也引入了可选类型(optional type)，用来处理那些可能不存在的值。它就以为着“这里有一个值，它等于x”或者“这里没有这个值”</p>
+<p>可选类型和OC中的nil相似，不过它适用于任何类型，而不仅仅是类对象。它也更安全，很多Swif的核心特性的实现都用到了它。</p>
+<p>可选类型是Swif是一种类型安全语言的例证，如果你指定某个变量的类型为String，那么你就不能给它赋Int类型的值了。</p>
+<p><strong>常量和变量</strong><br>前面已经介绍过常量和变量了，编写Swift代码时，如果确定某个变量的值不会再更改，应该尽可能用let来将其声明为常量。常量和变量的名称可以几乎是任何字符，比如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> π = <span class="number">3.14159</span></span><br><span class="line"><span class="keyword">let</span> 你好 = <span class="string">"你好世界"</span></span><br><span class="line"><span class="keyword">let</span> 🐶🐮 = <span class="string">"dogcow</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>当然，名称还是会有一些约束，比如不能有箭头、横线、数学符号、空格，也不能以数字开头等。<br>声明变量或者常量之后，就不能在用同样的名字声明了，也不能将常量转换成变量，或者反过来。<br>如果要用Swift语言用过的名字声明变量，用(`)符号将关键字包起来，当然这是不推荐的，除非万不得已。</p>
+<p><strong>类型声明</strong><br>可以显示地指明变量或者常量的类型名称告诉编译器这个变量的类型。不过在实际开发中，很少需要这样声明类型，因为只要在声明变量或者常量的时候给它赋初始值，编译器就能推测出该变量或常量的数据类型了。如果没有提供初始值，则需要指明变量类型。</p>
+<p><strong>分号</strong><br>在Swift中，并不要求在每一句结尾时加上分号，当然加上分号也不会报错，但是，如果是在一行里边有多个表达式，则在每个表达式后面必须加上分号。</p>
+<p><strong>整型（Integers）</strong><br>Swift提供8、16、32和64位的有符号和无符号整型，它们和C语言类似，比如8位无符号整型为UInt8，整型的范围可以通过属性获取，比如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> minValue = <span class="type">UInt8</span>.<span class="built_in">min</span>  <span class="comment">// minValue is equal to 0, and is of type UInt8</span></span><br><span class="line"><span class="keyword">let</span> maxValue = <span class="type">UInt8</span>.<span class="built_in">max</span>  <span class="comment">// maxValue is equal to 255, and is of type UInt8</span></span><br></pre></td></tr></table></figure>
 
+<p>通常情况下，不要这样写，Swift提供了通用的整型类型Int,它为根据实际运行平台调整范围。与之类似的是UInt，适应平台的无符号整型。</p>
+<p>整型变量可以用多种进制表示，十进制则直接书写，二进制需要加0b前缀，八进制需要加0o前缀，十六进制需要加0x前缀</p>
+<p><strong>浮点数</strong><br>浮点数用来存储带有小数点的数，浮点数存储的范围比整型要大得多，Swift提供两种浮点数类型：<br>Double代表64位的浮点数<br>Float代表32位的浮点数</p>
+<p>Double可以精确到小数点后15位，Float只有6位。根据实际使用情况选择其中一种使用，如果两种都适合，推荐使用Double。<br>浮点数可以用十进制(无前缀)和十六进制(0x前缀)表示，小数点两边必须都有数字。也可以用指数表达（十进制用e，十六进制用p）：<br>1.25e2 相当于 1.25 × 100, 或者 125.0  十进制的科学表达式中，基数是10<br>0xFp2 相当于 15 × 4, 或者 60.0  十六进制的科学表达式中，基数是2</p>
+<p>数值的字面形式可以有很多格式，前面可以加任意数的缩进或者0，或者加下划线，这些都不会对整型和浮点型产生影响。</p>
+<p>不同的数值类型有不同的存储范围（比如Int8存储-128到127，UInt8存储0到255），将范围之外的值赋给该变量编译器会报错，数值类型不会隐式地自动转换，你必须显示地转换他们的类型(通过初始化器)：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> twoThousand: <span class="type">UInt16</span> = <span class="number">2_000</span></span><br><span class="line"><span class="keyword">let</span> one: <span class="type">UInt8</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> twoThousandAndOne = twoThousand + <span class="type">UInt16</span>(one) <span class="comment">//这里本身UInt16和UInt8是不能相加的</span></span><br></pre></td></tr></table></figure>
+
+<p>整型和浮点型之间的类型转换也必须显示地指明，从整型到浮点型以及从浮点型到整型都需要。</p>
+<p><strong>类型别名</strong><br>通过typealias关键字来为已经存在的类型定义新的名字。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typealias</span> <span class="type">AudioSample</span> = <span class="type">UInt16</span></span><br></pre></td></tr></table></figure>
+
+<p>一点定义了别名，就可以像用原始类型名一样在任何地方使用它了</p>
+<p><strong>Booleans</strong><br>Swift有一个基础的布尔类型，叫Bool，并且提供了两个布尔型常量true和false。</p>
+<p>Swift的类型安全机制阻止将非布尔型值向布尔型做隐性转换，比如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">1</span></span><br><span class="line"><span class="keyword">if</span> i &#123; <span class="comment">//改成 if i==1 则可</span></span><br><span class="line">    <span class="comment">// this example will not compile, and will report an error</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>元组</strong><br>元组将多个值组合成一个复合值，这些值并不需要都是统一类型的。比如(404, “Not Found”)就可以。</p>
+<p>元组也可以被分解为任意的常量或变量，这些变量或常量可以像通常那样被访问：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http404Error = (<span class="number">404</span>, <span class="string">"Not Found"</span>)</span><br><span class="line"><span class="keyword">let</span> (statusCode, statusMessage) = http404Error</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status code is \(statusCode)"</span>)</span><br><span class="line"><span class="comment">// prints "The status code is 404"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status message is \(statusMessage)"</span>)</span><br><span class="line"><span class="comment">// prints "The status message is Not Found</span></span><br></pre></td></tr></table></figure>
+
+<p>如果只需要元组的某一部分值，其他部分可以被忽略的话，那么在分解元组的时候可以用下划线：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> (justTheStatusCode, <span class="number">_</span>) = http404Error</span><br><span class="line"><span class="built_in">println</span>(<span class="string">"The status code is \(justTheStatusCode)"</span>)</span><br><span class="line"><span class="comment">// prints "The status code is 404</span></span><br></pre></td></tr></table></figure>
+
+<p>同时，也可以通过数字序号来访问元组的成员值：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">println</span>(<span class="string">"The status code is \(http404Error.0)"</span>)</span><br><span class="line"><span class="comment">// prints "The status code is 404"</span></span><br><span class="line"><span class="built_in">println</span>(<span class="string">"The status message is \(http404Error.1)"</span>)</span><br><span class="line"><span class="comment">// prints "The status message is Not Found</span></span><br></pre></td></tr></table></figure>
+
+<p>在定义元组时，也可以为每个元素指定名字，此后就可以通过名字来访问这些元素了：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http200Status = (statusCode: <span class="number">200</span>, description: <span class="string">"OK"</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">println</span>(<span class="string">"The status code is \(http200Status.statusCode)"</span>)</span><br><span class="line"><span class="comment">// prints "The status code is 200"</span></span><br><span class="line"><span class="built_in">println</span>(<span class="string">"The status message is \(http200Status.description)"</span>)</span><br><span class="line"><span class="comment">// prints "The status message is OK</span></span><br></pre></td></tr></table></figure>
+
+<p>元组在临时组织数据的时候非常有用，而不用每次都创建复杂的高级数据结构。但是如果数据需要长久或者复杂地组织起来，用类或者结构更合适。</p>
+<p><strong>可选项（Optionals）</strong><br>在C和JAVA中并没有可选项，与其最接近的就是JAVA中函数可以返回一个对象或者NULL，NULL意味着不存在这个对象。但是NULL只对对象适用，Swift则没有这个要求，可选项适用于任何类型。<br>举个栗子：Swift中的String类型有一个toInt方法，用来将String转换为Int，但是并不是所有的String都可以转换为Int的：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> possibleNumber = <span class="string">"123"</span></span><br><span class="line"><span class="keyword">let</span> convertedNumber = possibleNumber.toInt()</span><br><span class="line"><span class="comment">// convertedNumber is inferred to be of type "Int?", or "optional Int"</span></span><br></pre></td></tr></table></figure>
+
+<p>nil 将optionals的值设为nil表示这个值不存在。</p>
+<p>注意：nil并不能用来给非可选项赋值。如果常量或者变量可能会在某些情况下没有值，则将其设为可选项。可选项值在声明时如果没有赋初始值，则自动被设为nil</p>
+<p>Swift的nil和OC中的nil不一样，OC中的nil表示指向不存在的对象的指针，而Swift的nil不是指针，它只是代表某个类型的值不存在。</p>
+<p>可以通过是否与nil相等来判断可选项值是否存在。比如：if convertedNumber != nil 这样。</p>
+<p>如果你确定某个optionals值一定有值，可以通过在optionals值名称后面加上感叹号来访问其实际值，这就是optionals值的强制展开：</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://Li5264a.github.io/2019/06/20/Swift学习笔记四/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/19/代码整洁之道-读书笔记/" class="archive-article-date">
-  	<time datetime="2019-06-19T13:14:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/19/代码整洁之道-读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">代码整洁之道--读书笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/19/代码整洁之道-读书笔记/">代码整洁之道--读书笔记</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/19/Swift学习笔记三/" class="archive-article-date">
-  	<time datetime="2019-06-19T12:42:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/19/Swift学习笔记三/">Swift学习笔记三</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/09/Swift学习笔记二/" class="archive-article-date">
-  	<time datetime="2019-06-09T15:26:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/09/Swift学习笔记二/">Swift学习笔记二</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/06/Swift学习笔记一/" class="archive-article-date">
-  	<time datetime="2019-06-06T14:02:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/06/Swift学习笔记一/">Swift学习笔记一</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/05/hello-world/" class="archive-article-date">
-  	<time datetime="2019-06-05T14:05:11.533Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -350,8 +379,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
