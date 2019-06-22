@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="第1章 整洁代码1.2 糟糕的代码20世纪80年代末，有家公司写了个流行的杀手应用。后来该软件的发布周期越来越长，缺陷总是不能修复，崩溃几率越来越大。 20年后一位雇员说：当时他们赶着推出产品，代码写得乱七八糟。特性越加越多，代码也越来越烂，最后再也没法管理这些代码了。 糟糕的代码毁掉了这家公司。 我们都曾瞟一眼自己亲手造成的混乱，并决定弃之不顾、走向明天。我们都曾看到自己的烂程序居然能运行，然后">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-19T13:36:13.432Z">
+<meta property="og:updated_time" content="2019-06-22T09:55:30.787Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码整洁之道--读书笔记">
 <meta name="twitter:description" content="第1章 整洁代码1.2 糟糕的代码20世纪80年代末，有家公司写了个流行的杀手应用。后来该软件的发布周期越来越长，缺陷总是不能修复，崩溃几率越来越大。 20年后一位雇员说：当时他们赶着推出产品，代码写得乱七八糟。特性越加越多，代码也越来越烂，最后再也没法管理这些代码了。 糟糕的代码毁掉了这家公司。 我们都曾瞟一眼自己亲手造成的混乱，并决定弃之不顾、走向明天。我们都曾看到自己的烂程序居然能运行，然后">
@@ -265,6 +265,54 @@
 
 <h3 id="2-17-不要添加没用的语境"><a href="#2-17-不要添加没用的语境" class="headerlink" title="2.17 不要添加没用的语境"></a>2.17 不要添加没用的语境</h3><p>只要短名称足够清楚，就要比长名称好。</p>
 <h3 id="2-18-最后的话"><a href="#2-18-最后的话" class="headerlink" title="2.18 最后的话"></a>2.18 最后的话</h3><p>取好名字最难的地方在于需要良好的描述技巧和共有文化背景。</p>
+<h2 id="第3章-函数"><a href="#第3章-函数" class="headerlink" title="第3章 函数"></a>第3章 函数</h2><h3 id="3-1-短小"><a href="#3-1-短小" class="headerlink" title="3.1 短小"></a>3.1 短小</h3><p>函数的第一条规则是短小，第二条规则是还要更短小。</p>
+<h3 id="3-2-只做一件事"><a href="#3-2-只做一件事" class="headerlink" title="3.2 只做一件事"></a>3.2 只做一件事</h3><p>函数应该只做一件事并做好它。</p>
+<h3 id="3-3-每个函数一个抽象层级"><a href="#3-3-每个函数一个抽象层级" class="headerlink" title="3.3 每个函数一个抽象层级"></a>3.3 每个函数一个抽象层级</h3><p>如果函数只做了<strong>该函数名下同一抽象层</strong>上的步骤，则函数只做了一件事。</p>
+<blockquote>
+<p>向下规则：我们想要让代码拥有自顶向下的阅读顺序。</p>
+</blockquote>
+<h3 id="3-4-switch-语句"><a href="#3-4-switch-语句" class="headerlink" title="3.4 switch 语句"></a>3.4 switch 语句</h3><p><a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank" rel="noopener">单一权责原则，SRP，Single Responsibility Principle</a><br><a href="https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle" target="_blank" rel="noopener">开放闭合原则，OCP，Open/Closed Principle</a></p>
+<h3 id="3-5-使用描述性的名称"><a href="#3-5-使用描述性的名称" class="headerlink" title="3.5 使用描述性的名称"></a>3.5 使用描述性的名称</h3><p>长而具有描述性的名称要比短而令人费解的名称好，要比描述性的长注释好。<br>选择描述性的名称能清理你关于模块的设计思路，并帮你改进它。追索好名称，往往导致对代码的改善重构。</p>
+<h3 id="3-6-函数参数"><a href="#3-6-函数参数" class="headerlink" title="3.6 函数参数"></a>3.6 函数参数</h3><p>最理想的参数数量是零，其次是一，再次是二，尽量避免三。<br>参数不易对付，它们带有太多概念性。参数与函数名处在不同的抽象层级，他要求你了解目前并不特别重要的细节。<br>从测试的角度看，参数越多越麻烦。<br>输出参数比输入参数还要难以理解。因为我们习惯性地认为信息通过参数输入函数，通过返回值从函数中输出。</p>
+<h4 id="3-6-1-一元函数的普遍形式"><a href="#3-6-1-一元函数的普遍形式" class="headerlink" title="3.6.1 一元函数的普遍形式"></a>3.6.1 一元函数的普遍形式</h4><p>两种普遍理由：</p>
+<ul>
+<li><p>问关于该参数的问题。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">fileExists</span><span class="params">(<span class="string">"MyFile"</span>)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>操作该参数，将其转化并输出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InputStream <span class="title">fileOpen</span><span class="params">(<span class="string">"MyFile"</span>)</span></span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="3-6-2-标识参数"><a href="#3-6-2-标识参数" class="headerlink" title="3.6.2 标识参数"></a>3.6.2 标识参数</h4><p>向函数传入布尔值简直就是骇人听闻的做法。这样做就等于宣布函数不只做一件事。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">render(<span class="keyword">boolean</span> isSuite)</span><br></pre></td></tr></table></figure>
+
+<p>应将该函数一分为二：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">renderForSuite()</span><br><span class="line">renderForSingleTest()</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-6-3-二元函数"><a href="#3-6-3-二元函数" class="headerlink" title="3.6.3 二元函数"></a>3.6.3 二元函数</h4><p>如非必须使用二元函数，就应该尽量利用一些机制将其转换成一元函数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writeField(outputStream, name)</span><br></pre></td></tr></table></figure>
+
+<p>可以通过重构将 outputStream 做成类的一个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writeField(name)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-6-4-三元函数"><a href="#3-6-4-三元函数" class="headerlink" title="3.6.4 三元函数"></a>3.6.4 三元函数</h4><p>三元函数要比二元函数难懂得多。</p>
+<h4 id="3-6-5-参数对象"><a href="#3-6-5-参数对象" class="headerlink" title="3.6.5 参数对象"></a>3.6.5 参数对象</h4><p>如果函数看来需要两个、三个或三个以上参数，就说明其中一些参数应该封装为类了。</p>
+<h4 id="3-6-6-参数列表"><a href="#3-6-6-参数列表" class="headerlink" title="3.6.6 参数列表"></a>3.6.6 参数列表</h4><p>类似于 string.format 中的可变参数实则是二元函数。</p>
+<h4 id="3-6-7-动词与关键词"><a href="#3-6-7-动词与关键词" class="headerlink" title="3.6.7 动词与关键词"></a>3.6.7 动词与关键词</h4><p>函数和参数应当形成一种非常良好的动词/名词对形式。例如 WriteField(name)。</p>
+<h3 id="3-7-无副作用"><a href="#3-7-无副作用" class="headerlink" title="3.7 无副作用"></a>3.7 无副作用</h3><p>函数承诺只做一件事，但还是会做被藏起来的事。有时它会对自己类中的变量做出未能预期的改动，有时它会把变量搞成向函数传递的参数或是系统全局变量。</p>
+<p>输出参数<br>应避免使用输出参数。如果函数必须要修改某种状态，就修改所属对象的状态。</p>
+<h3 id="3-8-分隔指令与询问"><a href="#3-8-分隔指令与询问" class="headerlink" title="3.8 分隔指令与询问"></a>3.8 分隔指令与询问</h3><p>函数要么做什么事，要么回答什么事，两样都干常会导致混乱。</p>
+<h3 id="3-9-使用异常替代返回错误码"><a href="#3-9-使用异常替代返回错误码" class="headerlink" title="3.9 使用异常替代返回错误码"></a>3.9 使用异常替代返回错误码</h3><p>返回错误码会导致更深层次的嵌套结构，并要求调用者立刻处理错误。<br>使用异常替代返回错误码，错误处理代码就能从主路径代码中分离出来。</p>
+<h4 id="3-9-1-抽离-Try-Catch-代码块"><a href="#3-9-1-抽离-Try-Catch-代码块" class="headerlink" title="3.9.1 抽离 Try/Catch 代码块"></a>3.9.1 抽离 Try/Catch 代码块</h4><p>最好把 Try/Catch 代码块抽离出来形成另外的函数，这样可避免把错误处理与正常流程混为一谈，不致搞乱代码结构。</p>
+<h4 id="3-9-2-错误处理就是一件事"><a href="#3-9-2-错误处理就是一件事" class="headerlink" title="3.9.2 错误处理就是一件事"></a>3.9.2 错误处理就是一件事</h4><p>错误处理的函数不该做其他事。</p>
+<h4 id="3-9-3-错误码依赖磁铁"><a href="#3-9-3-错误码依赖磁铁" class="headerlink" title="3.9.3 错误码依赖磁铁"></a>3.9.3 错误码依赖磁铁</h4><p>错误码通常暗示某处有个类或是枚举定义了所有错误码，这个类或枚举就是依赖磁铁。其他许多类都得导入和使用它。当它修改时，其他类就得重新编译和部署。</p>
+<h3 id="3-10-别重复自己"><a href="#3-10-别重复自己" class="headerlink" title="3.10 别重复自己"></a>3.10 别重复自己</h3><blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Don't_repeat_yourself" target="_blank" rel="noopener">DRY 原则，Don’t Repeat Yourself</a><br>重复可能是软件中一切邪恶的根源。许多原则与实践规则都是为控制和消除重复而创建。</p>
+</blockquote>
+<h3 id="3-11-结构化编程"><a href="#3-11-结构化编程" class="headerlink" title="3.11 结构化编程"></a>3.11 结构化编程</h3><p><a href="https://en.wikipedia.org/wiki/Structured_programming" target="_blank" rel="noopener">Edsger Dijkstra 的结构化编程原则。</a><br>只要函数保持短小，偶尔出现的 return、break、continue 语句没有坏处，甚至比单入单出原则更具有表达力。</p>
+<h3 id="3-12-如何写出这样的函数"><a href="#3-12-如何写出这样的函数" class="headerlink" title="3.12 如何写出这样的函数"></a>3.12 如何写出这样的函数</h3><p>先动手写，再打磨推敲，同时配合单元测试。</p>
+<h3 id="3-13-小结"><a href="#3-13-小结" class="headerlink" title="3.13 小结"></a>3.13 小结</h3><p>编程艺术是且一直就是语言设计的艺术。<br>大师级程序员把系统当做故事来讲，而不是当做程序来写。那种领域特定语言的一个部分，就是描述在系统中发生的各种行为的函数层级。</p>
 <center> **未完待续** </center>
       
 
