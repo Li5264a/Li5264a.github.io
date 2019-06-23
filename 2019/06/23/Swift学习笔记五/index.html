@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="集合类型（Collection Type）Swift提供三种主要的集合类型：数组(array)、集合(set)、字典(dictionary)。数组是有序的值序列，集合是无序的值序列，字典是无序的键值对序列。这三个类型都要求显示指定存储值的类型。因此不能把不同类型的值增加到它们中。 如果创建的集合类型并赋值给一个变量而非常量，那么它就是可以改变的。如果是赋值给一个常量，那么它就是不可改变的.尽管如此">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T14:32:14.559Z">
+<meta property="og:updated_time" content="2019-06-23T14:33:28.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习笔记五">
 <meta name="twitter:description" content="集合类型（Collection Type）Swift提供三种主要的集合类型：数组(array)、集合(set)、字典(dictionary)。数组是有序的值序列，集合是无序的值序列，字典是无序的键值对序列。这三个类型都要求显示指定存储值的类型。因此不能把不同类型的值增加到它们中。 如果创建的集合类型并赋值给一个变量而非常量，那么它就是可以改变的。如果是赋值给一个常量，那么它就是不可改变的.尽管如此">
@@ -177,6 +177,7 @@
         <h3 id="集合类型（Collection-Type）"><a href="#集合类型（Collection-Type）" class="headerlink" title="集合类型（Collection Type）"></a>集合类型（Collection Type）</h3><p>Swift提供三种主要的集合类型：数组(array)、集合(set)、字典(dictionary)。数组是有序的值序列，集合是无序的值序列，字典是无序的键值对序列。这三个类型都要求显示指定存储值的类型。因此不能把不同类型的值增加到它们中。</p>
 <p>如果创建的集合类型并赋值给一个变量而非常量，那么它就是可以改变的。如果是赋值给一个常量，那么它就是不可改变的.尽管如此，在确定该变量应该不可改变或者不会改变的时候，尽量赋值给常量使它不可改变。</p>
 <p>Swift中的array,set,dictionary都是被实现为通用集合(generic collection)的。通用(generi)是Swift的一个特性，通用代码允许用户创建灵活可重用的函数或者类型，它可以避免重复开发，比如你可以创建一个数组，它可以包含Int类型，或者是String，或者是其他类型，你不需要在一开始就特别制定它的类型。generi特性在后面会专门介绍。</p>
+<a id="more"></a>
 <h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>数组是用来有序存储一系列同类型的值的数据类型。Swift的array是和Foundation的NSArray相通的。数组中的元素可以是重复的。</p>
 <p>Swift的数组类型全写是Array<sometype>，也可以将数组的类型简写为[SomeType]。尽管两种方式是相通的，但是简写方式是被推荐的。</sometype></p>
 <p>可以用初始化语法创建一个指定类型的空数组：</p>
