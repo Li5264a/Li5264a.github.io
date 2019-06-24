@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="对于Swift学习而言,可选类型Optional是永远绕不过的坎,特别刚开始学习Swift的时候,经常就会被代码行间的?与!,有的时候甚至是??搞得稀里糊涂的.这篇文章会给各位带来我对于可选类型的一些认识以及如何进行解包,其中会涉及到Swift中if let以及guard let的使用以及思考。 var num: Int?它是什么类型?在进行解包前,我们先来理解一个概念,这样可能更有利于对于解包.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-24T15:26:59.258Z">
+<meta property="og:updated_time" content="2019-06-24T15:29:59.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift解包操作">
 <meta name="twitter:description" content="对于Swift学习而言,可选类型Optional是永远绕不过的坎,特别刚开始学习Swift的时候,经常就会被代码行间的?与!,有的时候甚至是??搞得稀里糊涂的.这篇文章会给各位带来我对于可选类型的一些认识以及如何进行解包,其中会涉及到Swift中if let以及guard let的使用以及思考。 var num: Int?它是什么类型?在进行解包前,我们先来理解一个概念,这样可能更有利于对于解包.">
@@ -185,9 +185,11 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="keyword">is</span>' test <span class="keyword">is</span> always <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>不是<strong>Int类</strong>,它是<strong>Optiona类型</strong></p>
-<p>那么Optional类型是啥呢–可选类型,具体Optional是啥,点进去看看你就知道了.在这里我就不多做解释了.<br>var num: Int?这是Optional的声明，意思不是”我声明了一个Optional的Int值”,而是”我声明了一个Optional类型值，它可能包含一个Int值，也可能什么都不包含”,也就是说实际上我们声明的是Optional类型，而不是声明了一个Int类型!
-以此类推String?是什么类型,T?是什么类型,答案各位心中已经明了吧.<br>正是因为num是一个可选类型,所以它才能赋值为nil, var num: Int = nil,这样是不可能赋值成功的,因为Int类型中没有nil这个概念!
-这就是Swift与JAVA一个很大区别,在JAVA中我们的对象都可以赋值为null(和nil意义相同),而在Swift中,能赋值为nil只有Optional类型!</p>
+<p>那么Optional类型是啥呢–可选类型,具体Optional是啥,点进去看看你就知道了.在这里我就不多做解释了.</p>
+<p>var num: Int?这是Optional的声明，意思不是”我声明了一个Optional的Int值”,而是”我声明了一个Optional类型值，它可能包含一个Int值，也可能什么都不包含”,也就是说实际上我们声明的是Optional类型，而不是声明了一个Int类型!</p>
+<p>以此类推String?是什么类型,T?是什么类型,答案各位心中已经明了吧.</p>
+<p>正是因为num是一个可选类型,所以它才能赋值为nil, var num: Int = nil,这样是不可能赋值成功的,因为Int类型中没有nil这个概念!</p>
+<p>这就是Swift与JAVA一个很大区别,在JAVA中我们的对象都可以赋值为null(和nil意义相同),而在Swift中,能赋值为nil只有Optional类型!</p>
 <p><strong>解包的基本思路,使用if let或者guard let,而非强制解包</strong></p>
 <p>我们先来看一个简单的需求,虽然这个需求在实际开发中意义不太大:<br>我们需要从前端获取到的一个Int类型的数据,然后在后端进行计算出结果然后将其结果进行返回.<br>设计思路:<br>由于在请求前端的接口中,可能会返回我们的数据为空(即nil),所以在转模型的时候我们不能定义INT类型,而是定义Int?便于接受数据<br>如果数据为nil,nil进行任何运算都是没有意义的,那么其返回值也应该为nil,所以函数的返回值也是Int?类型</p>
 <p>那么函数应该设计成为这个样子是这样的:</p>
