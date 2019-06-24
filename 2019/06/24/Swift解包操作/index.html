@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://Li5264a.github.io">
-  <title>Archives: 2019/6 | Hexo</title>
+  <title>Swift解包操作 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://Li5264a.github.io/archives/2019/06/index.html">
+  <meta name="description" content="对于Swift学习而言,可选类型Optional是永远绕不过的坎,特别刚开始学习Swift的时候,经常就会被代码行间的?与!,有的时候甚至是??搞得稀里糊涂的.这篇文章会给各位带来我对于可选类型的一些认识以及如何进行解包,其中会涉及到Swift中if let以及guard let的使用以及思考。 var num: Int?它是什么类型?在进行解包前,我们先来理解一个概念,这样可能更有利于对于解包.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift解包操作">
+<meta property="og:url" content="https://Li5264a.github.io/2019/06/24/Swift解包操作/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="对于Swift学习而言,可选类型Optional是永远绕不过的坎,特别刚开始学习Swift的时候,经常就会被代码行间的?与!,有的时候甚至是??搞得稀里糊涂的.这篇文章会给各位带来我对于可选类型的一些认识以及如何进行解包,其中会涉及到Swift中if let以及guard let的使用以及思考。 var num: Int?它是什么类型?在进行解包前,我们先来理解一个概念,这样可能更有利于对于解包.">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-24T15:26:59.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Swift解包操作">
+<meta name="twitter:description" content="对于Swift学习而言,可选类型Optional是永远绕不过的坎,特别刚开始学习Swift的时候,经常就会被代码行间的?与!,有的时候甚至是??搞得稀里糊涂的.这篇文章会给各位带来我对于可选类型的一些认识以及如何进行解包,其中会涉及到Swift中if let以及guard let的使用以及思考。 var num: Int?它是什么类型?在进行解包前,我们先来理解一个概念,这样可能更有利于对于解包.">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,238 +154,186 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Swift解包操作" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Swift解包操作
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/24/Swift解包操作/" class="archive-article-date">
+
+        
+        <a href="/2019/06/24/Swift解包操作/" class="archive-article-date">
   	<time datetime="2019-06-24T15:08:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/24/Swift解包操作/">Swift解包操作</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对于Swift学习而言,可选类型Optional是永远绕不过的坎,特别刚开始学习Swift的时候,经常就会被代码行间的?与!,有的时候甚至是??搞得稀里糊涂的.<br>这篇文章会给各位带来我对于可选类型的一些认识以及如何进行解包,其中会涉及到Swift中if let以及guard let的使用以及思考。</p>
+<p><strong>var num: Int?它是什么类型?</strong><br>在进行解包前,我们先来理解一个概念,这样可能更有利于对于解包.</p>
+<p>首先我们来看看这样一段代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num: <span class="type">Int?</span></span><br><span class="line">num = <span class="number">10</span></span><br><span class="line"><span class="keyword">if</span> num <span class="keyword">is</span> <span class="type">Optional</span>&lt;<span class="type">Int</span>&gt; &#123;</span><br><span class="line"> <span class="built_in">print</span>(<span class="string">"它是可选类型"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line"> <span class="built_in">print</span>(<span class="string">"它是Int类型"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<a id="more"></a>
+<p>请先暂时不要把这段代码复制到Xcode中,先自问自答,num是什么类型,是Int类型吗?</p>
+<p>好了,你可以将这段代码复制到Xcode里去了,然后在IDE中的if上一定会出现这样一段话:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="keyword">is</span>' test <span class="keyword">is</span> always <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
+<p>不是<strong>Int类</strong>,它是<strong>Optiona类型</strong></p>
+<p>那么Optional类型是啥呢–可选类型,具体Optional是啥,点进去看看你就知道了.在这里我就不多做解释了.<br>var num: Int?这是Optional的声明，意思不是”我声明了一个Optional的Int值”,而是”我声明了一个Optional类型值，它可能包含一个Int值，也可能什么都不包含”,也就是说实际上我们声明的是Optional类型，而不是声明了一个Int类型!
+以此类推String?是什么类型,T?是什么类型,答案各位心中已经明了吧.<br>正是因为num是一个可选类型,所以它才能赋值为nil, var num: Int = nil,这样是不可能赋值成功的,因为Int类型中没有nil这个概念!
+这就是Swift与JAVA一个很大区别,在JAVA中我们的对象都可以赋值为null(和nil意义相同),而在Swift中,能赋值为nil只有Optional类型!</p>
+<p><strong>解包的基本思路,使用if let或者guard let,而非强制解包</strong></p>
+<p>我们先来看一个简单的需求,虽然这个需求在实际开发中意义不太大:<br>我们需要从前端获取到的一个Int类型的数据,然后在后端进行计算出结果然后将其结果进行返回.<br>设计思路:<br>由于在请求前端的接口中,可能会返回我们的数据为空(即nil),所以在转模型的时候我们不能定义INT类型,而是定义Int?便于接受数据<br>如果数据为nil,nil进行任何运算都是没有意义的,那么其返回值也应该为nil,所以函数的返回值也是Int?类型</p>
+<p>那么函数应该设计成为这个样子是这样的:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getData</span><span class="params">(<span class="number">_</span> data: Int?)</span></span> -&gt; <span class="type">Int?</span></span><br></pre></td></tr></table></figure>
+
+<p>如果一般解包的话,我们的函数实现大概会写成这样:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getData</span><span class="params">(<span class="number">_</span> data: Int?)</span></span> -&gt; <span class="type">Int?</span> &#123;</span><br><span class="line"> <span class="keyword">if</span> data != <span class="literal">nil</span> &#123;</span><br><span class="line"> <span class="keyword">return</span> data! *** <span class="comment">//(***表示逻辑运算)</span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用!进行强制解包,然后进行运算</p>
+<p>我想说的是使用强制解包固然没有错,不过如果在实际开发中这个data参数可能还要其他用途,那么是不是每使用一次都要进行强制解包?<br>强制解包是一种很危险的行为,一旦解包失败,就有崩溃的可能,也许你会说这不是有if判断,然而实际开发中,情况往往比想的复杂的多,<strong>所以安全的解包行为应该是通过if let 或者guard let来进行</strong></p>
+<p><strong>使用if let 解包</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getData</span><span class="params">(<span class="number">_</span> data: Int?)</span></span> -&gt; <span class="type">Int?</span> &#123;</span><br><span class="line"> <span class="keyword">if</span> <span class="keyword">let</span> data = data &#123;</span><br><span class="line"> <span class="keyword">return</span> data ****</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用 guard let 解包</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getData</span><span class="params">(<span class="number">_</span> data: Int?)</span></span> -&gt; <span class="type">Int?</span> &#123;</span><br><span class="line"> <span class="keyword">guard</span> <span class="keyword">let</span> data = data <span class="keyword">else</span> &#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> data ****</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么if let和guard let 你更倾向使用哪个呢?<br>在本例子中,其实感觉二者的差别不大,不过我个人更倾向于使用guard let.<br>原因如下:<br>在使用if let的时候其大括号类中的情况才是正常情况,而外部主体是非正常情况的返回的nil;<br>而在使用guard let的时候,guard let else中的大括号是异常情况,而外部主体返回的是正常情况.<br><strong>对于一个以返回结果为目的的函数,函数主体展示正常返回值,而将异常抛出在判断中,这样不仅逻辑更清晰,而且更加易于代码阅读</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://Li5264a.github.io/2019/06/24/Swift解包操作/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/23/Swift学习笔记五/" class="archive-article-date">
-  	<time datetime="2019-06-23T13:55:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/23/Swift学习笔记五/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swift学习笔记五</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/23/Swift学习笔记五/">Swift学习笔记五</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/20/Swift学习笔记四/" class="archive-article-date">
-  	<time datetime="2019-06-20T15:28:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/20/Swift学习笔记四/">Swift学习笔记四</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/19/代码整洁之道-读书笔记/" class="archive-article-date">
-  	<time datetime="2019-06-19T13:14:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/19/代码整洁之道-读书笔记/">代码整洁之道--读书笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/19/Swift学习笔记三/" class="archive-article-date">
-  	<time datetime="2019-06-19T12:42:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/19/Swift学习笔记三/">Swift学习笔记三</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/09/Swift学习笔记二/" class="archive-article-date">
-  	<time datetime="2019-06-09T15:26:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/09/Swift学习笔记二/">Swift学习笔记二</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/06/Swift学习笔记一/" class="archive-article-date">
-  	<time datetime="2019-06-06T14:02:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/06/Swift学习笔记一/">Swift学习笔记一</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/05/hello-world/" class="archive-article-date">
-  	<time datetime="2019-06-05T14:05:11.533Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -404,8 +356,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
